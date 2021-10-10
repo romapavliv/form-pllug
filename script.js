@@ -116,7 +116,7 @@ button.addEventListener('click', () => {
     }
     if (count < 1) {
         inpNickName.classList.add('fieldset');
-        labelName.classList.add('active');
+        labelNickName.classList.add('active');
         return false;
     }
 

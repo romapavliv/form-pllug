@@ -126,7 +126,7 @@ button.addEventListener('click', () => {
 
     if(userName.length >= 1 && userName.length < 3 || userName.length >= 100) {
         inpName.classList.add('fieldset');
-        labelNickName.classList.add('active');
+        labelName.classList.add('active');
         return false;
     }
 

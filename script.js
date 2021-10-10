@@ -17,62 +17,9 @@ const regNickName = /[А-Яа-яЄ-іє/!/@/#/$/%/^/`/~/&/*/(/)-/_/=/+/?/>/./,/<
 const regName = /[А-Яа-яЄ-іє/0-9/!/@/#/$/%/^/`/~/&/*/(/)-/_/=/+/?/>/./,/</"/'/ /:/;/{/[/}/]/g;
 const regText = /[А-Яа-яЄ-іє/0-9/~/`/@/#/$/%/^/&/*/(/)/-/_/[/{//}/+/=/</>///;/:/'/"/]/g;
 
-
-inpNickName.oninput = function() {
-this.value = this.value.replace(regNickName, '');
-let strNickName = "";
-    strNickName = strNickName + inpNickName.value;
-    arrNick = strNickName.split("");
-    if(strNickName.length < 1) {
-        toggleNick = false;
-        checkButton();
-    }
-    if(strNickName.length >= 1) {
-        toggleNick = true;
-        checkButton();
-
-    }
-    inpNickName.classList.remove('fieldset');
-    labelName.classList.remove('active');
-    labelNickName.classList.remove('active');
-    labelText.classList.remove('active');
-}
-
-inpName.oninput = function() {
-    this.value = this.value.replace(regName, '');
-    let strName = "";
-    strName = strName + inpName.value;
-    arrName = strName.split("");
-    if(strName.length >= 1) {
-        toggleName = true;
-        checkButton();
-
-    }
-
-    inpName.classList.remove('fieldset');
-    labelName.classList.remove('active');
-    labelNickName.classList.remove('active');
-    labelText.classList.remove('active');
-}
-
-textarea.oninput = function() {
-    this.value = this.value.replace(regText, '');
-    let strText = "";
-    strText = strText + textarea.value;
-    arrText = strText.split("");
-    if(arrText.length >= 1) {
-        toggleText = true;
-        checkButton();
-    }
-    textarea.classList.remove('fieldset');
-    labelName.classList.remove('active');
-    labelNickName.classList.remove('active');
-    labelText.classList.remove('active');
-}
-
 const createPost = (nickName, userName, postText) => {
     const div = document.createElement('div');
-    div.className="postsContainer";
+    div.className = "postsContainer";
     postContainer.prepend(div);
 
     const pUser = document.createElement('p');
@@ -94,9 +41,58 @@ const cleanInputs = () => {
 }
 
 const checkButton = () => {
-    if(toggleNick === true && toggleName === true && toggleText === true) {
+    if (toggleNick === true && toggleName === true && toggleText === true) {
         button.disabled = false;
     }
+}
+
+const removeClasses = () => {
+    inpNickName.classList.remove('fieldset');
+    inpName.classList.remove('fieldset');
+    labelName.classList.remove('active');
+    labelNickName.classList.remove('active');
+    labelText.classList.remove('active');
+    textarea.classList.remove('fieldset');
+}
+
+
+inpNickName.oninput = function () {
+    button.disabled = true;
+    this.value = this.value.replace(regNickName, '');
+    let strNickName = "";
+    strNickName = strNickName + inpNickName.value;
+    arrNick = strNickName.split("");
+    if (strNickName.length >= 1) {
+        toggleNick = true;
+        checkButton();
+    }
+    removeClasses();
+}
+
+inpName.oninput = function () {
+    button.disabled = true;
+    this.value = this.value.replace(regName, '');
+    let strName = "";
+    strName = strName + inpName.value;
+    arrName = strName.split("");
+    if (strName.length >= 1) {
+        toggleName = true;
+        checkButton();
+    }
+    removeClasses();
+}
+
+textarea.oninput = function () {
+    button.disabled = true;
+    this.value = this.value.replace(regText, '');
+    let strText = "";
+    strText = strText + textarea.value;
+    arrText = strText.split("");
+    if (arrText.length >= 1) {
+        toggleText = true;
+        checkButton();
+    }
+    removeClasses();
 }
 
 button.addEventListener('click', () => {
@@ -105,7 +101,7 @@ button.addEventListener('click', () => {
     const userName = inpName.value;
     const postText = textarea.value;
 
-    if(nickName.length >= 1 && nickName.length < 3 || nickName.length >= 24) {
+    if (nickName.length >= 1 && nickName.length < 3 || nickName.length >= 24) {
 
         inpNickName.classList.add('fieldset');
         labelNickName.classList.add('active');
@@ -113,24 +109,24 @@ button.addEventListener('click', () => {
     }
 
     let count = 0;
-    for(let i = 0; i < nickName.length; i++) {
-        if(nickName[i].match(/[a-z]/)) {
+    for (let i = 0; i < nickName.length; i++) {
+        if (nickName[i].match(/[a-z]/)) {
             count++;
         }
     }
-    if(count < 1) {
+    if (count < 1) {
         inpNickName.classList.add('fieldset');
         labelName.classList.add('active');
         return false;
     }
 
-    if(userName.length >= 1 && userName.length < 3 || userName.length >= 100) {
+    if (userName.length >= 1 && userName.length < 3 || userName.length >= 100) {
         inpName.classList.add('fieldset');
         labelName.classList.add('active');
         return false;
     }
 
-    if(postText.length >= 1 && postText.length < 3 || postText.length >= 1000) {
+    if (postText.length >= 1 && postText.length < 3 || postText.length >= 1000) {
         textarea.classList.add('fieldset');
         labelText.classList.add('active');
         return false;

@@ -67,10 +67,11 @@ body {
 .button {
     margin: 10px 0;
     cursor: pointer;
-    height: 40px;
-    width: 120px;
+    height: 45px;
+    width: 150px;
     background-color: greenyellow;
     border: 2px solid whitesmoke;
+    border-radius: 20px;
 }
 
 .labelNickName {

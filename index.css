@@ -16,13 +16,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: url(https://images.pexels.com/photos/164005/pexels-photo-164005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    background-position: center;
+    background-size: auto;
 }
 
 .form {
     padding: 40px 20px;
     margin: 0 auto;
     height: 500px;
-    width: 350px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,17 +37,24 @@ body {
 
 .input, textarea {
     margin: 5px 0;
-    width: 220px;
+    width: 80%;
+}
+
+.input:focus, .textarea:focus {
+    outline: none;
 }
 
 .textarea {
     height: 80px;
+    width: 80%;
     resize: none;
 }
 
 .button {
     margin: 10px 0;
     cursor: pointer;
+    height: 40px;
+    width: 120px;
 }
 
 .labelNickName {
@@ -87,12 +97,19 @@ body {
 
   }
 
+.postContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+}
+
 .postsContainer {
     border-bottom: 1px solid firebrick;
-    max-width: 220px;
+    width: 80%;
     max-height: 200px;
     overflow-y: auto;
-    overflow-x: hidden;
 }
 
 

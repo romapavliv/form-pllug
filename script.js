@@ -4,7 +4,7 @@ const textarea = document.querySelector('.textarea');
 const button = document.querySelector('.button');
 const userLine = document.querySelector('.postUserIdentify');
 const textLine = document.querySelector('.postTextIdentify');
-const postsContainer = document.querySelector('.postsContainer');
+const postContainer = document.querySelector('.postContainer');
 const labelNickName = document.querySelector('.labelNickName');
 const labelName = document.querySelector('.labelName');
 const labelText = document.querySelector('.labelText');
@@ -23,6 +23,10 @@ this.value = this.value.replace(regNickName, '');
 let strNickName = "";
     strNickName = strNickName + inpNickName.value;
     arrNick = strNickName.split("");
+    if(strNickName.length < 1) {
+        toggleNick = false;
+        checkButton();
+    }
     if(strNickName.length >= 1) {
         toggleNick = true;
         checkButton();
@@ -69,7 +73,7 @@ textarea.oninput = function() {
 const createPost = (nickName, userName, postText) => {
     const div = document.createElement('div');
     div.className="postsContainer";
-    postsContainer.prepend(div);
+    postContainer.prepend(div);
 
     const pUser = document.createElement('p');
     pUser.className = "postUserIdentify";
@@ -134,6 +138,10 @@ button.addEventListener('click', () => {
 
     cleanInputs();
     createPost(nickName, userName, postText);
+    button.disabled = true;
+    toggleName = false;
+    toggleNick = false;
+    toggleText = false;
 })
 
 

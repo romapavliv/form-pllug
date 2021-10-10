@@ -24,7 +24,9 @@ body {
 .form {
     padding: 40px 20px;
     margin: 0 auto;
-    height: 500px;
+    height: max-content;
+    min-height: 450px;
+    overflow-y: auto;
     width: 650px;
     display: flex;
     flex-direction: column;
@@ -38,6 +40,7 @@ body {
 .input, textarea {
     margin: 5px 0;
     width: 80%;
+    height: 30px;
 }
 
 .input:focus, .textarea:focus {

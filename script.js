@@ -140,6 +140,6 @@ button.addEventListener('click', () => {
     toggleText = false;
 })
 
-
+Завдання виконано.
 
 
